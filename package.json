@@ -69,5 +69,9 @@
       "jest --config ./scripts/jest/config.src.js --findRelatedTests",
       "git add"
     ]
+  },
+  "dependencies": {
+    "@shelf/jest-dynamodb": "^1.7.0",
+    "aws-sdk": "^2.643.0"
   }
 }

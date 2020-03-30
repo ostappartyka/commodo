@@ -8405,7 +8405,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-repropose@^1.0.2:
+repropose@^1.0.0, repropose@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/repropose/-/repropose-1.0.2.tgz#3bcc98f7d18f04f6b8db620c86845ab936a26cb1"
   integrity sha512-cS3T4MRJukKWdWzGedssDpt9YOt+9ShxJ1/Iy0o13y8yH+UOofxmqT+aOjCGsg+qkP+fnh7QpeGsYH2YZfEREg==
