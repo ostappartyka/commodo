@@ -1,6 +1,6 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
-import { database, collection, findCursor } from "./database";
+import { database, findCursor } from "./database";
 
 const sandbox = sinon.createSandbox();
 
@@ -12,25 +12,24 @@ describe("findOne test", function() {
 
     beforeEach(() => SimpleModel.getStoragePool().flush());
     it("findOne - must generate correct query", async () => {
-        const collectionSpy = sandbox.spy(database, "collection");
         // We mock 'find' because it is called internally.
-        const findOneSpy = sandbox.spy(collection, "find");
+        const findOneSpy = sandbox.spy(database, "find");
 
         await SimpleModel.findOne();
 
-        const databaseArg = collectionSpy.getCall(0).args[0];
+        // const databaseArg = databaseSpy.getCall(0).args[0];
         const findArg = findOneSpy.getCall(0).args[0];
 
-        expect(databaseArg).toBe("SimpleModel");
+        // expect(databaseArg).toBe("SimpleModel");
         expect(findArg).toBe(undefined);
 
-        collectionSpy.restore();
+        // databaseSpy.restore();
         findOneSpy.restore();
     });
 
     it("findOne - should find previously inserted model", async () => {
         // We mock 'find' because it is called internally.
-        const findOneStub = sandbox.stub(collection, "find").callsFake(() => {
+        const findOneStub = sandbox.stub(database, "find").callsFake(() => {
             findCursor.data = [
                 {
                     id: "xyz",
@@ -53,7 +52,7 @@ describe("findOne test", function() {
 
     it("findOne - should include search query if passed", async () => {
         // We mock 'find' because it is called internally.
-        const findOneSpy = sandbox.spy(collection, "find");
+        const findOneSpy = sandbox.spy(database, "find");
 
         await SimpleModel.findOne({
             query: {

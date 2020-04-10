@@ -1,6 +1,6 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
-import { collection } from "./database";
+import { database } from "./database";
 import mbdbid from "mdbid";
 
 const sandbox = sinon.createSandbox();
@@ -9,7 +9,7 @@ describe("findById error test", function() {
     afterEach(() => sandbox.restore());
 
     it("findById - should throw an error", async () => {
-        const findByIdStub = sandbox.stub(collection, "find").callsFake(() => {
+        const findByIdStub = sandbox.stub(database, "find").callsFake(() => {
             throw Error("This is an error.");
         });
 

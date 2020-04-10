@@ -1,14 +1,14 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
 const sandbox = sinon.createSandbox();
-import { collection } from "./database";
+import { database } from "./database";
 
 describe("findOne error test", function() {
     afterEach(() => sandbox.restore());
 
     it("findOne - should find previously inserted model", async () => {
         // We mock 'find' because it is called internally.
-        const findOneStub = sandbox.stub(collection, "find").callsFake(() => {
+        const findOneStub = sandbox.stub(database, "find").callsFake(() => {
             throw Error("This is an error.");
         });
 

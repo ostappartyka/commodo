@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
 const sandbox = sinon.createSandbox();
-import { collection, findCursor } from "./database";
+import { database, findCursor } from "./database";
 import mdbid from "mdbid";
 
 describe("findById test", function() {
@@ -12,7 +12,7 @@ describe("findById test", function() {
     beforeEach(() => SimpleModel.getStoragePool().flush());
 
     it("must generate correct query", async () => {
-        const findOneSpy = sandbox.spy(collection, "find");
+        const findOneSpy = sandbox.spy(database, "find");
 
         const id = mdbid();
         await SimpleModel.findById(id);
@@ -27,7 +27,7 @@ describe("findById test", function() {
     it("findById - should find previously inserted model", async () => {
         const xyz = mdbid();
 
-        const findOneStub = sandbox.stub(collection, "find").callsFake(() => {
+        const findOneStub = sandbox.stub(database, "find").callsFake(() => {
             findCursor.data = [
                 {
                     id: xyz,

@@ -1,6 +1,6 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
-import { collection } from "./database";
+import { database } from "./database";
 import { WithStorageError } from "@commodo/fields-storage";
 const sandbox = sinon.createSandbox();
 
@@ -8,7 +8,7 @@ describe("delete test", function() {
     afterEach(() => sandbox.restore());
 
     it("must generate correct query", async () => {
-        const deleteSpy = sandbox.spy(collection, "deleteOne");
+        const deleteSpy = sandbox.spy(database, "deleteOne");
 
         const simpleModel = new SimpleModel();
         simpleModel.id = "507f1f77bcf86cd799439011";

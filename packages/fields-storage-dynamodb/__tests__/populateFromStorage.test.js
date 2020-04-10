@@ -1,6 +1,6 @@
 import sinon from "sinon";
 import { ComplexModel, SimpleModel } from "./models/complexModel";
-import { collection, findCursor } from "./database";
+import { database, findCursor } from "./database";
 import mdbid from "mdbid";
 
 const sandbox = sinon.createSandbox();
@@ -17,7 +17,7 @@ describe("populateFromStorage test", function() {
         const threeThree = mdbid();
         const fourFour = mdbid();
 
-        let findOneStub = sandbox.stub(collection, "find").callsFake(() => {
+        let findOneStub = sandbox.stub(database, "find").callsFake(() => {
             findCursor.data = [
                 {
                     firstName: "test",
@@ -57,7 +57,7 @@ describe("populateFromStorage test", function() {
 
         expect(user.getField("simpleModel").current).toBe("01234567890123456789adee");
 
-        findOneStub = sandbox.stub(collection, "find").callsFake(() => {
+        findOneStub = sandbox.stub(database, "find").callsFake(() => {
             findCursor.data = [{ id: "01234567890123456789adee", name: "Test-1" }];
             return findCursor;
         });
@@ -77,7 +77,7 @@ describe("populateFromStorage test", function() {
             { id: four, name: "Test-4" }
         ];
 
-        const countStub = sandbox.stub(collection, "countDocuments").callsFake(() => 3);
+        const countStub = sandbox.stub(database, "countDocuments").callsFake(() => 3);
 
         expect((await user.simpleModels).length).toBe(3);
 

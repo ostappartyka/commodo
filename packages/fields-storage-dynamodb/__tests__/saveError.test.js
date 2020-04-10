@@ -1,13 +1,13 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
 const sandbox = sinon.createSandbox();
-import { collection } from "./database";
+import { database } from "./database";
 
 describe("save error test", function() {
     afterEach(() => sandbox.restore());
 
     it("should save new model but an exception must be thrown", async () => {
-        const insertOneStub = sandbox.stub(collection, "insertOne").callsFake(() => {
+        const insertOneStub = sandbox.stub(database, "insertOne").callsFake(() => {
             throw Error("This is an error.");
         });
 
@@ -23,13 +23,13 @@ describe("save error test", function() {
     });
 
     it("should update existing model but an exception must be thrown", async () => {
-        const insertOneStub = sandbox.stub(collection, "insertOne").callsFake(() => {});
+        const insertOneStub = sandbox.stub(database, "insertOne").callsFake(() => {});
 
         const simpleModel = new SimpleModel();
         await simpleModel.save();
         insertOneStub.restore();
 
-        const updateOneStub = sandbox.stub(collection, "updateOne").callsFake(() => {
+        const updateOneStub = sandbox.stub(database, "updateOne").callsFake(() => {
             throw Error("This is an error.");
         });
 

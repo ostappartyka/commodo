@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
 const sandbox = sinon.createSandbox();
-import { collection } from "./database";
+import { database } from "./database";
 
 describe("delete error test", function() {
     afterEach(() => sandbox.restore());
@@ -11,7 +11,7 @@ describe("delete error test", function() {
         simpleModel.name = "This is a test";
         await simpleModel.save();
 
-        const deleteOneStub = sandbox.stub(collection, "deleteOne").callsFake(() => {
+        const deleteOneStub = sandbox.stub(database, "deleteOne").callsFake(() => {
             throw Error("This is an error.");
         });
 

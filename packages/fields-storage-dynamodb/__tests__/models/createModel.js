@@ -1,15 +1,17 @@
 import { withStorage } from "@commodo/fields-storage";
-import { MongoDbDriver, withId } from "@commodo/fields-storage-mongodb";
+import { withId } from "@commodo/fields-storage-mongodb";
 import { database } from "./../database";
 import { compose } from "ramda";
+import { DynamoDbDriver } from '../../src';
 
 const createModel = base =>
     compose(
         withId(),
         withStorage({
-            driver: new MongoDbDriver({
+            driver: new DynamoDbDriver({
                 database,
-                aggregateTotalCount: false
+                aggregateTotalCount: false,
+                tableName: 'Test',
             })
         })
     )(base);
