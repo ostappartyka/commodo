@@ -5,7 +5,7 @@ import { compose } from "ramda";
 import { withName } from "@commodo/name";
 import { withFields, string } from "@commodo/fields";
 import { withStorage } from "@commodo/fields-storage";
-import { MongoDbDriver, withId } from "@commodo/fields-storage-mongodb";
+import { MongoDbDriver, withId } from "@commodo/fields-storage-dynamodb";
 
 const sandbox = sinon.createSandbox();
 

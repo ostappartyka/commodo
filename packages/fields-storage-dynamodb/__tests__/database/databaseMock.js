@@ -1,4 +1,4 @@
-import find from '../../../fields-storage-mongodb/__tests__/database/findCursorMock';
+import find from '../../../fields-storage-dynamodb/__tests__/database/findCursorMock';
 
 function mockFunction() {
     return {

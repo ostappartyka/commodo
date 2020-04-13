@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import SimpleModel from "./models/simpleModel";
 import { database } from "./database";
-import { withAggregate } from "@commodo/fields-storage-mongodb";
+import { withAggregate } from "@commodo/fields-storage-dynamodb";
 
 const sandbox = sinon.createSandbox();
 
