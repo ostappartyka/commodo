@@ -1,6 +1,6 @@
 import { compose } from "ramda";
 import { withStorage } from "@commodo/fields-storage";
-import { MongoDbDriver, withId } from "@commodo/fields-storage-mongodb";
+import { MongoDbDriver, withId } from "@commodo/fields-storage-dynamodb";
 import { database } from "./database";
 import { withProps } from "repropose";
 

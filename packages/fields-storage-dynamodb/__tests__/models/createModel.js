@@ -1,5 +1,5 @@
 import { withStorage } from "@commodo/fields-storage";
-import { withId } from "@commodo/fields-storage-mongodb";
+import { withId } from "@commodo/fields-storage-dynamodb";
 import { database } from "./../database";
 import { compose } from "ramda";
 import { DynamoDbDriver } from '../../src';

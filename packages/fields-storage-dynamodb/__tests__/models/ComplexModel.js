@@ -2,7 +2,6 @@ import createModel from "./createModel";
 import { withFields, string, fields, boolean } from "@commodo/fields";
 import { withName } from "@commodo/name";
 import { ref } from "@commodo/fields-storage-ref";
-import { id } from "@commodo/fields-storage-mongodb";
 import { compose } from "ramda";
 
 const VerificationModel = compose(
@@ -44,4 +43,4 @@ const ComplexModel = compose(
     withName("ComplexModel")
 )(createModel());
 
-export { VerificationModel, TagModel, ComplexModel, SimpleModel  };
+export { VerificationModel, TagModel, ComplexModel, SimpleModel };
