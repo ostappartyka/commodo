@@ -11,7 +11,6 @@ const createModel = base =>
             driver: new DynamoDbDriver({
                 database,
                 aggregateTotalCount: false,
-                tableName: 'Test',
             })
         })
     )(base);
